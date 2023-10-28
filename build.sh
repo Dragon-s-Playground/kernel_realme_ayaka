@@ -1,9 +1,9 @@
 #!/bin/bash
 
 config=kona-perf_defconfig
-
-MAKE_PATH=../prebuilts/build-tools/bin/
-CROSS_COMPILE=../prebuilts/gcc/bin/aarch64-linux-android-
+#CROSS_COMPILE=../prebuilts/gcc/bin/aarch64-linux-android-
+PATH="$HOME/toolchain/clang/bin:$PATH"
+CROSS_COMPILE="$HOME/toolchain/gcc/bin/aarch64-linux-android-"
 KERNEL_ARCH=arm64
 KERNEL_OUT=../kernel_out
 export KERNEL_SRC=${KERNEL_OUT}
@@ -13,7 +13,8 @@ ARCH=${KERNEL_ARCH}
 TARGET_INCLUDES=${TARGET_KERNEL_MAKE_CFLAGS}
 TARGET_LINCLUDES=${TARGET_KERNEL_MAKE_LDFLAGS}
 
-TARGET_KERNEL_MAKE_ENV+="CC=../prebuilts/clang/bin/clang"
+
+TARGET_KERNEL_MAKE_ENV+="CC=../toolchain/clang/bin/clang"
 
 ${MAKE_PATH}make O=${OUT_DIR} ${TARGET_KERNEL_MAKE_ENV} LLVM_IAS=1 HOSTLDFLAGS="${TARGET_LINCLUDES}" ARCH=${ARCH} CROSS_COMPILE=${CROSS_COMPILE} NM=llvm-nm OBJCOPY=llvm-objcopy OBJDUMP=llvm-objdump STRIP=llvm-strip -j16 LLVM_IAS=1 vendor/$config
 
