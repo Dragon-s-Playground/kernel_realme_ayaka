@@ -10311,7 +10311,7 @@ static int wlan_hdd_cfg80211_offloaded_packets(struct wiphy *wiphy,
 
 	return errno;
 }
-#endif
+
 
 #ifdef WLAN_NS_OFFLOAD
 static const struct nla_policy
@@ -15584,7 +15584,7 @@ const struct wiphy_vendor_command hdd_wiphy_vendor_commands[] = {
 			WIPHY_VENDOR_CMD_NEED_RUNNING,
 		.doit = wlan_hdd_cfg80211_vendor_scan
 	},
-	#endif /* OPLUS_BUG_STABILITY */
+
 
 	/* Vendor abort scan */
 	{

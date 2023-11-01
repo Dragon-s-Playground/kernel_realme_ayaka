@@ -180,4 +180,3 @@
 
 #endif /* FEATURE_BLACKLIST_MGR */
 
-#endif /* __CFG_BLACKLIST_MGR */
